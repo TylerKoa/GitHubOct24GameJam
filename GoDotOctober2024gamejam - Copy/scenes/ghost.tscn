@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://sfoatlr7mtjd"]
+
+[ext_resource type="Texture2D" uid="uid://crv0al7csr1g1" path="res://TEMP_assets/sprites/all_movements.png" id="1_7elbq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0efka"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yysng"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh08w"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk7mo"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv8dm"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mhlp"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paefl"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v66lp"]
+atlas = ExtResource("1_7elbq")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqbx6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0efka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yysng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fh08w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk7mo")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv8dm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mhlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paefl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v66lp")
+}],
+"loop": true,
+"name": &"ghostFollowing",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4omam"]
+size = Vector2(10, 8)
+
+[node name="Ghost" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(1.29864, 1.29864)
+sprite_frames = SubResource("SpriteFrames_kqbx6")
+animation = &"ghostFollowing"
+autoplay = "dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_4omam")

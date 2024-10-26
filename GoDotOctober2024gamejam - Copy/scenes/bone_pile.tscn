@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://btvvg465f7vhv"]
+
+[ext_resource type="Texture2D" uid="uid://88nbcirrvf7c" path="res://TEMP_assets/sprites/fruit.png" id="1_lxtpd"]
+[ext_resource type="Script" path="res://scripts/bone_pile.gd" id="1_q8qhk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtdea"]
+atlas = ExtResource("1_lxtpd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnl2t"]
+atlas = ExtResource("1_lxtpd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh0jr"]
+atlas = ExtResource("1_lxtpd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7rdt2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtdea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnl2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh0jr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydqog"]
+radius = 4.0
+height = 14.0
+
+[node name="BonePile" type="Node2D"]
+script = ExtResource("1_q8qhk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_7rdt2")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 8)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_ydqog")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

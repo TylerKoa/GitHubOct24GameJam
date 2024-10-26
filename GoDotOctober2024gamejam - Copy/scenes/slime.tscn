@@ -52,6 +52,7 @@ sprite_frames = SubResource("SpriteFrames_os5oe")
 autoplay = "default"
 
 [node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("2_hts8m")]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
 position = Vector2(0, 6)

@@ -1,42 +1,54 @@
-[gd_scene load_steps=10 format=3 uid="uid://bld5hvoc0vej0"]
+[gd_scene load_steps=11 format=3 uid="uid://bld5hvoc0vej0"]
 
 [ext_resource type="Script" path="res://scripts/2_nd_body.gd" id="1_kau51"]
-[ext_resource type="Texture2D" uid="uid://d0vinigmjr6wq" path="res://TEMP_assets/sprites/slime_purple.png" id="1_y5hgt"]
 [ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="3_osk1l"]
+[ext_resource type="Texture2D" uid="uid://crv0al7csr1g1" path="res://TEMP_assets/sprites/all_movements.png" id="4_l3po8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a4erq"]
-atlas = ExtResource("1_y5hgt")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shyxg"]
-atlas = ExtResource("1_y5hgt")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s513l"]
-atlas = ExtResource("1_y5hgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiwnl"]
+atlas = ExtResource("4_l3po8")
 region = Rect2(48, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_whp6g"]
-atlas = ExtResource("1_y5hgt")
-region = Rect2(72, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8rgp"]
+atlas = ExtResource("4_l3po8")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5ign"]
+atlas = ExtResource("4_l3po8")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq8x0"]
+atlas = ExtResource("4_l3po8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4b4q"]
+atlas = ExtResource("4_l3po8")
+region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o2i1x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a4erq")
+"texture": SubResource("AtlasTexture_kiwnl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_shyxg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s513l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whp6g")
+"texture": SubResource("AtlasTexture_s8rgp")
 }],
 "loop": true,
-"name": &"default",
+"name": &"ghost_follow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5ign")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kq8x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4b4q")
+}],
+"loop": true,
+"name": &"skellyIdel",
 "speed": 10.0
 }]
 
@@ -49,9 +61,8 @@ script = ExtResource("1_kau51")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_o2i1x")
-autoplay = "default"
-frame = 1
-frame_progress = 0.146603
+animation = &"ghost_follow"
+autoplay = "skellyIdel"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(0, -4)

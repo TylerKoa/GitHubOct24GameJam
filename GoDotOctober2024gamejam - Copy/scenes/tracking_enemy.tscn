@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dftyxfj3gjuet"]
+
+[ext_resource type="Texture2D" uid="uid://d0vinigmjr6wq" path="res://TEMP_assets/sprites/slime_purple.png" id="2_kgc8x"]
+
+[sub_resource type="GDScript" id="GDScript_3lvrq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyjnx"]
+size = Vector2(85, 59)
+
+[node name="trackingEnemy" type="Area2D"]
+script = SubResource("GDScript_3lvrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_dyjnx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kgc8x")

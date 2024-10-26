@@ -2,6 +2,8 @@ extends Area2D
 
 #Timer for delay after death
 @onready var timer: Timer = $Timer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 func _on_body_entered(body: Node2D) -> void:
 	print("You died")
@@ -13,9 +15,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.rotation_degrees = 80
 	elif body.is_flipped == true:
 		body.rotation_degrees = -80
-	
-	
-	
 	body.set_player_speed_zero()
 	timer.start()
 	
