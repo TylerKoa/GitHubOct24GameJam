@@ -371,7 +371,7 @@ position = Vector2(-152, -10.5)
 shape = SubResource("RectangleShape2D_pehbg")
 
 [node name="BlueEnemy" parent="." instance=ExtResource("13_ta65k")]
-position = Vector2(203, -56)
+position = Vector2(254, -58)
 collision_layer = 5
 
 [connection signal="area_entered" from="Objects/Killzone" to="Player" method="_on_killzone_area_entered"]

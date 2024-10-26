@@ -22,7 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-"""
 func _on_area_2d_mouse_entered() -> void:
 	print("mouse inside")
 	label.visible = true
@@ -34,10 +33,9 @@ func _on_area_2d_mouse_exited() -> void:
 
 func change_to_ghost():
 	blob_animated_sprite.play("skellyIdel")
-	follow_Controller()
+	
 
 func change_to_knight():
 	blob_animated_sprite.play("ghost_follow")
-	follow_Controller()
+	
 	#Add code to follow spirte
-"""
