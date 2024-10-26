@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://bld5hvoc0vej0"]
+
+[ext_resource type="Script" path="res://scripts/2_nd_body.gd" id="1_kau51"]
+[ext_resource type="Texture2D" uid="uid://d0vinigmjr6wq" path="res://TEMP_assets/sprites/slime_purple.png" id="1_y5hgt"]
+[ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="3_osk1l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4erq"]
+atlas = ExtResource("1_y5hgt")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shyxg"]
+atlas = ExtResource("1_y5hgt")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s513l"]
+atlas = ExtResource("1_y5hgt")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whp6g"]
+atlas = ExtResource("1_y5hgt")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2i1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4erq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shyxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s513l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whp6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd1cs"]
+size = Vector2(10, 12)
+
+[node name="2ndBody" type="Node2D"]
+script = ExtResource("1_kau51")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_o2i1x")
+autoplay = "default"
+frame = 1
+frame_progress = 0.146603
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -4)
+scale = Vector2(1.6, 1.36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_jd1cs")
+
+[node name="Label" type="Label" parent="AnimatedSprite2D/Area2D"]
+visible = false
+offset_left = -13.5714
+offset_top = -8.0
+offset_right = 54.4286
+offset_bottom = 15.0
+scale = Vector2(0.448188, 0.448188)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("3_osk1l")
+theme_override_font_sizes/font_size = 8
+text = "'F' to Swap"
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+rotation = -1.5708
+
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+rotation = 1.5708
+
+[connection signal="mouse_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
