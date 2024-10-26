@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var game_manager: Node = %GameManager
 #Label
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var showing_label = false
@@ -28,7 +29,8 @@ func _on_area_2d_mouse_entered() -> void:
 	showing_label = true
 
 func _on_area_2d_mouse_exited() -> void:
-	label.visible = false
+	#game_manager.show_F_label()
+	#label.visible = false
 	showing_label = false
 
 func change_to_ghost():

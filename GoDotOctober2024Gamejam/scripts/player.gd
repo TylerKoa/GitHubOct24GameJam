@@ -9,6 +9,8 @@ class_name controller
 @onready var bone_pile: Node2D = $"../BonePile"
 @onready var animation_player: AnimationPlayer = $PickUpSound/AnimationPlayer
 @onready var knight_player: controller = $"."
+@onready var label: Label = $AnimatedSprite2D/Area2D/Label
+@onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
 
 var currentHealth = 5
 
@@ -47,8 +49,11 @@ func get_input():
 
 	# -------------------- If mouse over 2nd character and F is clicked -------------------
 	var distanceX = (knight_player.position-Second_body.position)
-	
-	if (Input.is_action_just_pressed("swap")) and (Second_body.showing_label == true):
+	if (distanceX[0] <= 50) and (distanceX[0] >= -50):
+		game_manager.show_F_label()
+	elif distanceX[0] > 50 || distanceX[0] < - 50:
+		game_manager.hide_F_label()
+	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)):
 		print("swapping")
 		#Swap character positons
 		var temp_current_location = knight_player.position

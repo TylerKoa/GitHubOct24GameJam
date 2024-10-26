@@ -1,4 +1,5 @@
 extends Node
+@onready var _2_nd_body: Node2D = $"../2ndBody"
 
 var score = 0
 var health = 5
@@ -32,3 +33,8 @@ func remove_five_health():
 	health -= 5
 	hud.update_heart_display()
 	hud.subtract_five_heart_display()
+
+func show_F_label():
+	_2_nd_body.label.visible = true
+func hide_F_label():
+	_2_nd_body.label.visible = false

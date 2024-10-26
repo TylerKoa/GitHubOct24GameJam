@@ -17,8 +17,8 @@ func _physics_process(delta: float) -> void:
 	
 	check_health()
 	
-	if game_manager.health <= 0:
-		get_tree().reload_current_scene()
+	#if game_manager.health <= 0:
+		#get_tree().reload_current_scene()
 
 	deal_with_damage()
 	
