@@ -157,6 +157,69 @@ animations = [{
 radius = 5.0
 height = 16.0
 
+[sub_resource type="Animation" id="Animation_e4jfr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, -20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(40, 23)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.356493]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.285196, 0.283882)]
+}
+
 [sub_resource type="Animation" id="Animation_ekh1r"]
 resource_name = "fiveFalling"
 length = 1.25
@@ -221,69 +284,6 @@ tracks/4/keys = {
 "values": [Vector2(0.285196, 0.283882)]
 }
 
-[sub_resource type="Animation" id="Animation_e4jfr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-2, -20)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Label:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(40, 23)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Label:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.356493]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Label:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.285196, 0.283882)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_li8c6"]
 _data = {
 "RESET": SubResource("Animation_e4jfr"),
@@ -294,7 +294,7 @@ _data = {
 size = Vector2(17.1931, 22)
 
 [node name="KnightPlayer" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_v5xgl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -304,7 +304,10 @@ animation = &"damageTaken"
 autoplay = "ghostIdle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -7)
+scale = Vector2(0.945174, 0.807954)
 shape = SubResource("CapsuleShape2D_osuju")
 
 [node name="Label" type="Label" parent="."]
@@ -327,11 +330,15 @@ libraries = {
 }
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
-scale = Vector2(1.27537, 1)
+scale = Vector2(1.68962, 1.05365)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(0, -11)
-scale = Vector2(1.39267, 1.02995)
+scale = Vector2(1.27585, 1.02995)
 shape = SubResource("RectangleShape2D_wtffk")
 
 [node name="attack_cooldown" type="Timer" parent="."]

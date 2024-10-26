@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name controller
 
+@onready var game_manager: Node = %GameManager
 @export var speed = 100
 @export var is_flipped = false
 @export var is_dead = false
@@ -8,15 +9,12 @@ class_name controller
 @onready var bone_pile: Node2D = $"../BonePile"
 @onready var animation_player: AnimationPlayer = $PickUpSound/AnimationPlayer
 
+var currentHealth = 5
 
-#var currentHealth = 5
 
-var enemy_inattack_range = false
-var ememy_attack_cooldown = true
-var health = 100
-var player_alive = true
-var attack_ip = false
-
+func removeFive():
+	currentHealth -= 5
+	game_manager.remove_five_health()
 #@export var possesingSkelly = false
 #@export var mouse_currently_inside = false
 
@@ -28,7 +26,6 @@ func get_input():
 	# Movement
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	
 	
 	#Facing Directions
 	var input_direction_axis = Input.get_axis("left", "right")
@@ -105,53 +102,13 @@ func startGhostFollow():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
-	attack()
+
 	
-	enemy_attack()
-	if  health <= 0:
-		player_alive = false
-		health = 0
-		print("Player died")
-		self.queue_free()
 
 # Function called after death to stop player from moving
 func set_player_speed_zero():
 	speed = 0
 
 
-func player():
-	pass
-
-func _on_player_hit_box_body_entered(body: Node2D) -> void:
-	if body.has_method("enemy"):
-		enemy_inattack_range = true
-
-
-func _on_player_hit_box_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:	
-	if body.has_method("enemy"):
-		enemy_inattack_range = false
-
-
-func enemy_attack():
-	if enemy_inattack_range and ememy_attack_cooldown == true:
-		health -= 20
-		ememy_attack_cooldown = false
-		$attack_cooldown.start()
-		print(health)
-		print("Player took damage")
-
-
-func _on_timer_timeout() -> void:
-	ememy_attack_cooldown = true
-
-func attack():
-	if Input.is_action_just_pressed("attack"):
-		$attack_cooldown.start()
-		GameManager.player_current_attack = true
-		attack_ip = false
-
-
-func _on_deal_attack_timer_timeout() -> void:
-	$deal_attack_timer.stop()
-	GameManager.player_current_attack = false
-	attack_ip = false
+func is_a_player():
+	true

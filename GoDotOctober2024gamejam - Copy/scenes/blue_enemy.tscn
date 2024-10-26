@@ -111,16 +111,24 @@ shape = SubResource("CircleShape2D_nfwmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
+scale = Vector2(1.69415, 1.69415)
 shape = SubResource("CircleShape2D_86bkv")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+scale = Vector2(1.02003, 1.02003)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 position = Vector2(0, -4)
-scale = Vector2(1.85841, 1.85346)
+scale = Vector2(1.27308, 1.26969)
 shape = SubResource("CircleShape2D_862vw")
+
+[node name="hitDelay" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="detectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="EnemyHitBox" to="." method="_on_enemy_hit_box_body_entered"]
 [connection signal="body_exited" from="EnemyHitBox" to="." method="_on_enemy_hit_box_body_exited"]
+[connection signal="timeout" from="hitDelay" to="." method="_on_hit_delay_timeout"]
