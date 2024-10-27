@@ -249,8 +249,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbr2x"]
-size = Vector2(20.1265, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osuju"]
+radius = 5.0
+height = 32.1801
 
 [sub_resource type="Animation" id="Animation_e4jfr"]
 length = 0.001
@@ -401,9 +402,9 @@ autoplay = "ghostRun"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(1.49012e-08, 7)
-scale = Vector2(0.566264, 0.517891)
-shape = SubResource("RectangleShape2D_tbr2x")
+position = Vector2(0, -9.53674e-07)
+scale = Vector2(0.945174, 0.807954)
+shape = SubResource("CapsuleShape2D_osuju")
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -425,7 +426,6 @@ libraries = {
 }
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
-visible = false
 scale = Vector2(1.68962, 1.05365)
 collision_layer = 2
 collision_mask = 2
