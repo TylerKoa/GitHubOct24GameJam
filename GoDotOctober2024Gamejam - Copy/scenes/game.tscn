@@ -233,6 +233,10 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="Cooldown" type="Timer" parent="Player"]
+wait_time = 0.6
+autostart = true
+
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="Layer0" type="TileMapLayer" parent="TileMap"]

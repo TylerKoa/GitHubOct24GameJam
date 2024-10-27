@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name controller
 
+@onready var bullet_scene = preload("res://bullet.tscn")
+@onready var main = get_tree().get_root().get_node("Game")
+@onready var projectile = load("res://projectile.tscn")
 @onready var game_manager: Node = %GameManager
 @export var speed = 100
 @export var is_flipped = false
@@ -11,8 +14,10 @@ class_name controller
 @onready var knight_player: controller = $"."
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
+@onready var cooldown_timer = $Timer
 
 var currentHealth = 5
+var can_shoot = true
 
 
 func removeFive():
@@ -100,6 +105,8 @@ func startGhostFollow():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 	
 
@@ -110,3 +117,22 @@ func set_player_speed_zero():
 
 func is_a_player():
 	true
+
+func shoot():
+	if (Input.is_action_just_pressed("shoot") and can_shoot == true):
+		var bullet = bullet_scene.instantiate()
+		bullet.position.x = position.x
+		bullet.position.y = position.y
+		bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
+		get_parent().add_child(bullet)
+		can_shoot = false
+		$Cooldown.start()
+		print("action pressed")
+	else:
+		print("Weapon is on cooldown!")
+
+
+
+func _on_cooldown_timeout():
+	can_shoot = true
+	print("can shoot")
