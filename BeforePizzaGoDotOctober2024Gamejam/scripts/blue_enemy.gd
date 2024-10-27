@@ -53,6 +53,7 @@ func enemy():
 
 func pushback():
 	health -= 1
+	game_manager.subtract_enemy_one()
 	if health <= 0:
 		queue_free()
 

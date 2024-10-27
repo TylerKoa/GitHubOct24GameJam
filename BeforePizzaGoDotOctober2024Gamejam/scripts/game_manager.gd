@@ -23,6 +23,9 @@ func add_point():
 	hud.add_coin_display()
 	print(score)
 
+func subtract_enemy_one():
+	hud.hudSubtract_enemy_one()
+
 func addOneHealth():
 	health += 1
 	hud.update_heart_display()

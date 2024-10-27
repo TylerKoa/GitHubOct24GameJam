@@ -13,6 +13,8 @@ extends CanvasLayer
 @onready var dead_timer: Timer = $deadTimer
 @onready var player: controller = $"../../Player"
 @onready var Death_level = preload("res://scenes/Death_Screen.tscn") as PackedScene
+@onready var subtract_one_health_2: Label = $SubtractOneHealth2
+@onready var show_damage: Timer = $showDamage
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +43,31 @@ func subtract_heart_display():
 		subtract_one_health.visible = true
 		#ssubtract_one_health.visible = true
 	show_subtraction_timer.start()
+
+func hudSubtract_enemy_one():
+	if (subtract_one_health_2.text == "- 1") and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 2"
+	elif subtract_one_health_2.text == "- 2" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 3"
+	elif subtract_one_health_2.text == "- 3" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 4"
+	elif subtract_one_health_2.text == "- 4" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 5"
+	elif subtract_one_health_2.text == "- 5" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 6"
+	elif subtract_one_health_2.text == "- 6" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 7"
+	elif subtract_one_health_2.text == "- 7" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 8"
+	elif subtract_one_health_2.text == "- 8" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 9"
+	elif subtract_one_health_2.text == "- 0" and (subtract_one_health_2.visible == true):
+		subtract_one_health_2.text = "- 10"
+	elif subtract_one_health_2.visible != true:
+		subtract_one_health_2.text = "- 1"
+		subtract_one_health_2.visible = true
+	show_damage.start()
+
 
 func checkIfDead():
 	if game_manager.health <= 0:
@@ -95,6 +122,7 @@ func _on_show_addition_timeout() -> void:
 	subtract_five_health.visible = false
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -102,3 +130,7 @@ func _process(delta: float) -> void:
 
 func _on_show_coin_addition_timeout() -> void:
 	add_one_coin.visible = false
+
+
+func _on_show_damage_timeout() -> void:
+	subtract_one_health_2.visible = false

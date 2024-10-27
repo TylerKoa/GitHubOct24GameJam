@@ -55,6 +55,25 @@ theme_override_fonts/font = ExtResource("2_yoj5j")
 theme_override_font_sizes/font_size = 32
 text = "- 1"
 
+[node name="SubtractOneHealth2" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.452
+anchor_right = 0.569
+anchor_bottom = 1.0
+offset_left = -85.704
+offset_top = 138.0
+offset_right = -139.488
+offset_bottom = -478.0
+rotation = 0.0996456
+theme_override_colors/font_color = Color(0.664142, 0.313214, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.103744, 0.103744, 0.103744, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_yoj5j")
+theme_override_font_sizes/font_size = 32
+text = "- 1"
+
 [node name="AddOneHealth" type="Label" parent="."]
 visible = false
 anchors_preset = -1
@@ -118,6 +137,9 @@ text = "- 5"
 
 [node name="showCoinAddition" type="Timer" parent="."]
 
+[node name="showDamage" type="Timer" parent="."]
+
 [connection signal="timeout" from="showSubtraction" to="." method="_on_show_subtraction_timeout"]
 [connection signal="timeout" from="showAddition" to="." method="_on_show_addition_timeout"]
 [connection signal="timeout" from="showCoinAddition" to="." method="_on_show_coin_addition_timeout"]
+[connection signal="timeout" from="showDamage" to="." method="_on_show_damage_timeout"]
