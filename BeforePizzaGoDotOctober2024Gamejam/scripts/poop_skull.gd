@@ -12,6 +12,7 @@ var inside = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("swap") and inside == true and player.possesingSkelly == false:
+		player.has_bones = true
 		var temp_position = skelly.position
 		skelly.position = position
 		position = temp_position

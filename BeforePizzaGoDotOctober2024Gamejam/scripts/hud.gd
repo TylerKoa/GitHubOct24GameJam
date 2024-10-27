@@ -50,6 +50,9 @@ func checkIfDead():
 			player.currentHealth = 3
 			player.swap()
 			player.position = Vector2(24, -13)
+			player.has_bones = false
+			game_manager.hide_F_label()
+			player.secInvis()
 		else:
 			get_tree().change_scene_to_packed(Death_level)
 

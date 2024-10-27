@@ -6,7 +6,7 @@ class_name controller
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://projectile.tscn")
 @onready var game_manager: Node = %GameManager
-@export var speed = 100
+@export var speed = 200
 @export var is_flipped = false
 @export var is_dead = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -25,6 +25,7 @@ var onBones = false
 var AnimeType = "start"
 var last_type_bones
 var last_position_bones
+var has_bones = true 
 
 #hat, google, poop
 #>>>>>>> Stashed changes
@@ -64,7 +65,7 @@ func get_input():
 	var mouse_position = get_global_mouse_position()
 	# -------------------- If mouse over 2nd character and F is clicked -------------------
 	var distanceX = (knight_player.position-Second_body.position)
-	if (distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == false):
+	if (distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == false) and has_bones:
 		game_manager.show_F_label()
 		game_manager.hide_smallF_label()
 	elif(distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == true):
@@ -77,7 +78,8 @@ func get_input():
 		game_manager.hide_F_label()
 		game_manager.hide_smallF_label()
 	
-	if (Input.is_action_just_pressed("swap") and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false)):
+	
+	if (Input.is_action_just_pressed("swap") and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false) and has_bones):
 		swap()
 	while (possesingSkelly == true):
 		await get_tree().create_timer(0.2).timeout
@@ -94,6 +96,8 @@ func get_input():
 		is_flipped = true
 	
 	
+func secInvis():
+	Second_body.play_invs()
 func swap():
 	print("swapping")
 	#Swap character positons
@@ -118,6 +122,7 @@ func swap():
 		Second_body.play_invs()
 		#get_tree().get_root().get_node("2ndBody").visible = false
 	elif possesingSkelly == true:
+		speed = 200
 		$AnimatedSprite2D.visible = true
 		knight_player.position = Second_body.position
 		possesingSkelly = false
@@ -137,12 +142,6 @@ func _physics_process(delta):
 	move_and_slide()
 	if possesingSkelly == true and Input.is_action_just_pressed("attack"):
 		shoot()
-	if currentHealth <= 0:
-		if possesingSkelly == true:
-			swap()
-			knight_player.position = Vector2(24, -13)
-		else:
-			get_tree().change_scene_to_packed(Death_level)
 		
 
 
