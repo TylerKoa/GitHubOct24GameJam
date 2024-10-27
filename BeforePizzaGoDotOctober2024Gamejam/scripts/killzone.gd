@@ -16,6 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 			Engine.time_scale = 0.5
 	
 	#Rotate body depending on the direction character is facing
+	"""
 	if (body.is_flipped == false) and (body.currentHealth <= 5):
 		body.rotation_degrees = 80
 	elif (body.is_flipped == true)  and (body.currentHealth <= 5):
@@ -24,6 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.position[0] -= 25
 	elif (body.is_flipped == true) and (body.currentHealth > 5):
 		body.position[0] += 25
+	"""
 	body.removeFive()
 	print(body.currentHealth)
 
