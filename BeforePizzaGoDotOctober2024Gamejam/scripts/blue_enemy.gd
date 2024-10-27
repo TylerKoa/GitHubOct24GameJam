@@ -9,6 +9,7 @@ var player = null
 
 var health = 8
 var player_inattack_zone = false
+var healthDmg = 1
 
 func check_health():
 	game_manager.deadCheck()
@@ -52,7 +53,7 @@ func enemy():
 	pass
 
 func pushback():
-	health -= 1
+	health -= healthDmg
 	game_manager.subtract_enemy_one()
 	if health <= 0:
 		queue_free()
