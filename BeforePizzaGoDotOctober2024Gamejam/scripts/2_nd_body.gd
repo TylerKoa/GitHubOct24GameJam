@@ -33,16 +33,9 @@ func _on_area_2d_mouse_exited() -> void:
 	#label.visible = false
 	showing_label = false
 
-func change_to_ghost():
-	skelly_sprite.play("skellyIdel")
-	
-
-func change_to_knight():
-	skelly_sprite.play("ghost_follow")
-	
-	#Add code to follow spirte
-
 #Play Animations
+func play_invs():
+	skelly_sprite.play("ghost_follow")
 func play_googles():
 	skelly_sprite.play("priestSkelly")
 func play_pop():

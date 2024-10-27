@@ -20,14 +20,17 @@ class_name controller
 
 var currentHealth = 5
 var can_shoot = true
-
-
-
-
+var boneCount = 2
 var onBones = false
-var AnimeType = "hat"
+var AnimeType = "start"
+var last_type_bones
+var last_position_bones
+
 #hat, google, poop
 #>>>>>>> Stashed changes
+
+func giveAnimeType(skull_type):
+	AnimeType = skull_type
 
 func removeFive():
 	currentHealth -= 5
@@ -46,7 +49,7 @@ func get_input():
 	# Movement
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	
+	print(onBones)
 	#Facing Directions
 	var input_direction_axis = Input.get_axis("left", "right")
 	if (input_direction_axis > 0) and (is_dead == false):
@@ -73,30 +76,42 @@ func get_input():
 	elif(((distanceX[0] >= 50) || (distanceX[0] <= -50)) and (possesingSkelly == false)):
 		game_manager.hide_F_label()
 		game_manager.hide_smallF_label()
-	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false):
+	
+	if (Input.is_action_just_pressed("swap") and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false)):
 		print("swapping")
 		#Swap character positons
 		var temp_current_location = knight_player.position
 		knight_player.position = Second_body.position
 		Second_body.position[0] = temp_current_location[0]
 		Second_body.position[1] = temp_current_location[1]
-		
-		
 		if possesingSkelly == false:
-			
 			possesingSkelly = true
 			speed = 100
-			player_animated_sprite.play("skellyRun")
-			Second_body.change_to_knight()
+			#Decide animation:
+			if AnimeType == "hat":
+				player_animated_sprite.play("hatSkellyRun")
+			elif AnimeType == "google":
+				player_animated_sprite.play("priestSkellyRun")
+			elif AnimeType == "poop":
+				player_animated_sprite.play("popSkellyRun")
+			else:
+				player_animated_sprite.play("skellyRun")
+			Second_body.play_invs()
 			#get_tree().get_root().get_node("2ndBody").visible = false
-			
-		else:
+		elif possesingSkelly == true:
 			$AnimatedSprite2D.visible = true
 			knight_player.position = Second_body.position
 			possesingSkelly = false
 			speed = 150
+			if AnimeType == "hat":
+				Second_body.play_hat()
+			elif AnimeType == "google":
+				Second_body.play_googles()
+			elif AnimeType == "poop":
+				Second_body.play_pop()
+			else:
+				Second_body.play_idel()
 			player_animated_sprite.play("ghostRun")
-			Second_body.change_to_ghost()
 			
 	while (possesingSkelly == true):
 		await get_tree().create_timer(0.2).timeout
@@ -111,12 +126,6 @@ func get_input():
 	# If axis is < 0 then and not dead then switch animation
 	elif (input_direction_axis < 0) and (is_dead == false):
 		is_flipped = true
-
-
-func startGhostFollow():
-	while(keep_following):
-		Second_body.position[0] = knight_player.position[0] - 3
-		Second_body.position[1] = knight_player.position[1] - 3
 	
 # Function that is constantly being called to move character [don't touch]
 func _physics_process(delta):
@@ -133,8 +142,12 @@ func set_player_speed_zero():
 func is_on_bones(tF):
 	onBones = tF
 
-func giveAnimeType(skull_type):
-	AnimeType = skull_type
+func addBoneCount():
+	boneCount += 1
+
+func set_dead_bones(type, position):
+	last_type_bones = type
+	last_position_bones = position
 
 func is_a_player():
 	true

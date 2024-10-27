@@ -396,7 +396,7 @@ script = ExtResource("1_v5xgl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.41578, 0.41578)
 sprite_frames = SubResource("SpriteFrames_uesfa")
-animation = &"ghostRun"
+animation = &"skellyRun"
 autoplay = "ghostRun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
