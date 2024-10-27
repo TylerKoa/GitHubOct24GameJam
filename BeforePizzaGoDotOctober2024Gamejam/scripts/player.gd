@@ -49,7 +49,7 @@ func get_input():
 	# Movement
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	print(onBones)
+	#print(onBones)
 	#Facing Directions
 	var input_direction_axis = Input.get_axis("left", "right")
 	if (input_direction_axis > 0) and (is_dead == false):
