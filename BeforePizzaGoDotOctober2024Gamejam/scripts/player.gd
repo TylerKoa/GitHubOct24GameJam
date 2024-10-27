@@ -17,6 +17,7 @@ class_name controller
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
 @onready var Death_level = preload("res://scenes/Death_Screen.tscn") as PackedScene
 @onready var cooldown_timer = $Timer
+@onready var click: Label = $click
 
 var currentHealth = 5
 var can_shoot = true
@@ -107,6 +108,7 @@ func swap():
 	Second_body.position[1] = temp_current_location[1]
 	if possesingSkelly == false:
 		possesingSkelly = true
+		player.click.show()
 		speed = 100
 		#Decide animation:
 		if AnimeType == "hat":
@@ -126,6 +128,7 @@ func swap():
 		$AnimatedSprite2D.visible = true
 		knight_player.position = Second_body.position
 		possesingSkelly = false
+		player.click.hide()
 		speed = 150
 		if AnimeType == "hat":
 			Second_body.play_hat()
