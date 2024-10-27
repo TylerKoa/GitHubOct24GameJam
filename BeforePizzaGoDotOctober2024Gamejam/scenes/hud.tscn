@@ -19,7 +19,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("2_yoj5j")
 theme_override_font_sizes/font_size = 32
-text = "Coins: x"
+text = "Spirits: x"
 
 [node name="HealthCounter" type="Label" parent="."]
 anchors_preset = -1
@@ -85,7 +85,7 @@ offset_top = 316.0
 offset_right = -65.488
 offset_bottom = -300.0
 rotation = -0.342341
-theme_override_colors/font_color = Color(0.946792, 0.828323, 0, 1)
+theme_override_colors/font_color = Color(1.15514e-06, 0.954649, 0.859996, 1)
 theme_override_colors/font_shadow_color = Color(0.103744, 0.103744, 0.103744, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 15

@@ -17,12 +17,12 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	coin_counter.text = "Coins: " + str(game_manager.score)
+	coin_counter.text = "Spirits: " + str(game_manager.score)
 	health_counter.text = "Health: " + str(game_manager.health)
 
 #Function made that is called by game_manger every time player gets coin
 func update_coins_display():
-	coin_counter.text = "Coins: " + str(game_manager.score)
+	coin_counter.text = "Spirits: " + str(game_manager.score)
 
 #Updating hearts in corner
 func update_heart_display():

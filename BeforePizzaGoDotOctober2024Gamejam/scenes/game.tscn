@@ -1,9 +1,8 @@
-[gd_scene load_steps=44 format=4 uid="uid://c1koo20ekymwk"]
+[gd_scene load_steps=40 format=4 uid="uid://c1koo20ekymwk"]
 
 [ext_resource type="PackedScene" uid="uid://c7fcbb2qbuc1i" path="res://scenes/player.tscn" id="1_w4l5u"]
 [ext_resource type="Texture2D" uid="uid://bp01i6k20ck3k" path="res://TEMP_assets/sprites/world_tileset.png" id="2_7q7nt"]
 [ext_resource type="PackedScene" uid="uid://di6jptrd7ltwr" path="res://scenes/slime.tscn" id="2_bv38t"]
-[ext_resource type="PackedScene" uid="uid://dv86r2stms0k5" path="res://scenes/grass_platform.tscn" id="3_6682w"]
 [ext_resource type="Texture2D" uid="uid://bcuj5euduxe4o" path="res://titleMappingIcons/newAddedTiles.png" id="4_8qj17"]
 [ext_resource type="Texture2D" uid="uid://kywyj4wgwrdo" path="res://titleMappingIcons/skullPlusTiled.png" id="4_e1r7k"]
 [ext_resource type="PackedScene" uid="uid://pjrc4028k8ua" path="res://scenes/coin.tscn" id="4_rkddw"]
@@ -238,64 +237,6 @@ sources/0 = SubResource("TileSetAtlasSource_ibt2i")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vty70"]
 distance = -397.0
 
-[sub_resource type="Animation" id="Animation_1xvql"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(68, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(32, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ev0tw"]
-resource_name = "moveSmooth"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(68, -0.25, 0, 0.25, 0, 68, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(32, -0.25, 0, 0.25, 0, -1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdyca"]
-_data = {
-"RESET": SubResource("Animation_1xvql"),
-"moveSmooth": SubResource("Animation_ev0tw")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4486h"]
 size = Vector2(6, 25.5)
 
@@ -312,7 +253,7 @@ size = Vector2(110, 32)
 
 [node name="2ndBody" parent="." instance=ExtResource("10_r5eay")]
 z_index = 3
-position = Vector2(139, -54)
+position = Vector2(2374, -308)
 scale = Vector2(2, 2)
 
 [node name="Player" parent="." instance=ExtResource("1_w4l5u")]
@@ -848,25 +789,64 @@ texture = ExtResource("24_8uu37")
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(120, 24)
+position = Vector2(-160, -261)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-320, 307)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-211, 509)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(270, 548)
+
+[node name="Coin14" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(684, 545)
+
+[node name="Coin15" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-540, 436)
+
+[node name="Coin16" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-646, 549)
+
+[node name="Coin17" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-765, 381)
+
+[node name="Coin18" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-649, 67)
+
+[node name="Coin19" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-720, -140)
+
+[node name="Coin20" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-641, -554)
+
+[node name="Coin21" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(-214, -559)
+
+[node name="Coin22" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(180, -561)
+
+[node name="Coin23" parent="Coins" instance=ExtResource("4_rkddw")]
+position = Vector2(751, -401)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(135, -8)
+position = Vector2(-328, -299)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(136, 71)
+position = Vector2(190, -254)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(120, 72)
+position = Vector2(320, 88)
 
 [node name="Coin8" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(103, 71)
+position = Vector2(-632, -174)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(87, 71)
+position = Vector2(575, 241)
 
 [node name="Coin10" parent="Coins" instance=ExtResource("4_rkddw")]
-position = Vector2(71, 71)
+position = Vector2(631, -67)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_rkddw")]
 position = Vector2(120, 39)
@@ -912,37 +892,74 @@ shape = SubResource("WorldBoundaryShape2D_vty70")
 
 [node name="Objects" type="Node" parent="."]
 
-[node name="GrassPlatform2" parent="Objects" instance=ExtResource("3_6682w")]
-z_index = 1
-position = Vector2(68, 32)
-rotation = -1.5708
+[node name="Spike" parent="Objects" instance=ExtResource("5_vw8sp")]
+position = Vector2(-1256, -321)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/GrassPlatform2"]
-libraries = {
-"": SubResource("AnimationLibrary_fdyca")
-}
-autoplay = "moveSmooth"
-
-[node name="Killzone" parent="Objects" instance=ExtResource("5_vw8sp")]
-position = Vector2(18, -15)
-
-[node name="Sprite2D" type="Sprite2D" parent="Objects/Killzone"]
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Spike"]
 position = Vector2(-59, -3)
 rotation = 3.14159
 scale = Vector2(0.0446673, 0.0446673)
 texture = ExtResource("6_jm4tv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Spike"]
 z_index = 4
 position = Vector2(-59, -2)
 shape = SubResource("RectangleShape2D_4486h")
 
 [node name="BonePile" parent="Objects" instance=ExtResource("11_n02pm")]
-position = Vector2(-8, -66)
+position = Vector2(-68, 86)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile2" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(-318, 168)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile3" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(273, 253)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile4" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(-97, 536)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile5" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(-633, -42.0001)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile6" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(-498, -501)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile7" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(577, -493)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile8" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(515, 107)
+scale = Vector2(1.31564, 1.31564)
+
+[node name="BonePile9" parent="Objects" instance=ExtResource("11_n02pm")]
+position = Vector2(756, 85)
 scale = Vector2(1.31564, 1.31564)
 
 [node name="HatBones" parent="Objects" instance=ExtResource("10_h01ra")]
-position = Vector2(-85, -32)
+position = Vector2(-239, 42)
+scale = Vector2(0.59731, 0.59731)
+
+[node name="HatBones2" parent="Objects" instance=ExtResource("10_h01ra")]
+position = Vector2(-541, 113)
+scale = Vector2(0.59731, 0.59731)
+
+[node name="HatBones3" parent="Objects" instance=ExtResource("10_h01ra")]
+position = Vector2(-619, 405)
+scale = Vector2(0.59731, 0.59731)
+
+[node name="HatBones4" parent="Objects" instance=ExtResource("10_h01ra")]
+position = Vector2(-254, 575)
+scale = Vector2(0.59731, 0.59731)
+
+[node name="HatBones5" parent="Objects" instance=ExtResource("10_h01ra")]
+position = Vector2(-102, -543)
 scale = Vector2(0.59731, 0.59731)
 
 [node name="GoogleSkull" parent="Objects" instance=ExtResource("11_dxlcm")]
@@ -953,13 +970,41 @@ scale = Vector2(0.541434, 0.541434)
 position = Vector2(-49, -51)
 scale = Vector2(0.271797, 0.271797)
 
+[node name="PoopSkull4" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(211, 289)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull5" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(301, -187)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull6" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(-231, 369)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull7" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(148, 552)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull8" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(470, 544)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull9" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(846, 528)
+scale = Vector2(0.271797, 0.271797)
+
+[node name="PoopSkull10" parent="Objects" instance=ExtResource("12_dah0x")]
+position = Vector2(713, -288)
+scale = Vector2(0.271797, 0.271797)
+
 [node name="PoopSkull2" parent="Objects" instance=ExtResource("12_dah0x")]
-position = Vector2(-0.999992, -158)
-scale = Vector2(0.538487, 0.538487)
+position = Vector2(-216, -339)
+scale = Vector2(0.27161, 0.27161)
 
 [node name="PoopSkull3" parent="Objects" instance=ExtResource("12_dah0x")]
 position = Vector2(-8.00001, -206)
-scale = Vector2(0.538487, 0.538487)
+scale = Vector2(0.493944, 0.493944)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -976,6 +1021,7 @@ script = ExtResource("8_w4g6q")
 
 [node name="SingleHitDamge" parent="." instance=ExtResource("12_tkuwd")]
 visibility_layer = 2
+position = Vector2(-1260, -188)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="SingleHitDamge"]
@@ -999,7 +1045,7 @@ scale = Vector2(0.449604, 0.449604)
 script = ExtResource("19_6xr8n")
 
 [node name="Poop" parent="." instance=ExtResource("16_ox47i")]
-position = Vector2(-95, -61)
+position = Vector2(53, 293)
 scale = Vector2(0.984035, 0.984035)
 
 [node name="ChurchMan" parent="." instance=ExtResource("17_0q0fq")]
@@ -1018,7 +1064,7 @@ texture = ExtResource("28_h3u2r")
 light_mask = 2
 visibility_layer = 2
 z_index = 3
-position = Vector2(604, -679)
+position = Vector2(602, -679)
 scale = Vector2(1.05, 1.05)
 collision_layer = 2
 collision_mask = 2
@@ -1033,7 +1079,7 @@ shape = SubResource("RectangleShape2D_82lj0")
 
 [connection signal="timeout" from="Player/Cooldown" to="2ndBody" method="_on_cooldown_timeout"]
 [connection signal="timeout" from="Player/Cooldown" to="Player" method="_on_cooldown_timeout"]
-[connection signal="area_entered" from="Objects/Killzone" to="Player" method="_on_killzone_area_entered"]
+[connection signal="area_entered" from="Objects/Spike" to="Player" method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="SingleHitDamge" to="2ndBody" method="_on_single_hit_damge_body_entered"]
 [connection signal="body_entered" from="shopkeep/Area2D" to="shopkeep" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="shopkeep/Area2D" to="shopkeep" method="_on_area_2d_body_exited"]

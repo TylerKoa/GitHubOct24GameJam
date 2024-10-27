@@ -44,7 +44,8 @@ func play_hat():
 	skelly_sprite.play("hatSkelly")
 func play_idel():
 	skelly_sprite.play("SkellyIdel")
-
+func play_bare():
+	skelly_sprite.play("SkellyIdel")
 
 func _on_cooldown_timeout() -> void:
 	pass # Replace with function body.

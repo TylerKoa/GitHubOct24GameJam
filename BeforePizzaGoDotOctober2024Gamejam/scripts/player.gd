@@ -111,6 +111,8 @@ func swap():
 			player_animated_sprite.play("priestSkellyRun")
 		elif AnimeType == "poop":
 			player_animated_sprite.play("popSkellyRun")
+		elif AnimeType == "bare":
+			player_animated_sprite.play("skellyRun")
 		else:
 			player_animated_sprite.play("skellyRun")
 		Second_body.play_invs()
