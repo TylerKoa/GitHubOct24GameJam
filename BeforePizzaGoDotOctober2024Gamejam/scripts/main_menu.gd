@@ -2,7 +2,7 @@ class_name MainMenu
 extends Control
 @onready var exit_game: Button = $TextureRect/ExitGame
 @onready var start_game: Button = $TextureRect/StartGame
-@onready var start_level = preload("res://scenes/game.tscn") as PackedScene
+@onready var start_level = preload("res://scenes/Controllsmenu.tscn") as PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
