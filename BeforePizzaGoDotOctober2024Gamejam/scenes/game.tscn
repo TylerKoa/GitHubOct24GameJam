@@ -1026,7 +1026,7 @@ scale = Vector2(3.49283, 3.49283)
 
 [node name="Slime4" parent="Enemies" instance=ExtResource("2_bv38t")]
 z_index = 3
-position = Vector2(324, 428)
+position = Vector2(678, 557)
 rotation = -1.58167
 scale = Vector2(3.49283, 3.49283)
 
@@ -1067,7 +1067,7 @@ position = Vector2(53, 293)
 scale = Vector2(0.984035, 0.984035)
 
 [node name="ChurchMan" parent="." instance=ExtResource("17_0q0fq")]
-position = Vector2(-37, -110)
+position = Vector2(-706, 579)
 scale = Vector2(0.399657, 0.399657)
 
 [node name="shopkeep" type="CharacterBody2D" parent="."]
