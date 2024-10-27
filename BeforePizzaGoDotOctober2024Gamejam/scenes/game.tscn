@@ -989,7 +989,7 @@ position = Vector2(-152, -10.5)
 shape = SubResource("RectangleShape2D_pehbg")
 
 [node name="BlueEnemy" parent="." instance=ExtResource("13_ta65k")]
-position = Vector2(254, -58)
+position = Vector2(-212, -196)
 collision_layer = 5
 
 [node name="Exorsists" parent="." instance=ExtResource("15_s2s5m")]

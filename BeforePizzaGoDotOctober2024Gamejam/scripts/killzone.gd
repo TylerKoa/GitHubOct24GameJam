@@ -11,8 +11,9 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	print("-5 health")
 	print("body ealth:" + str(body.currentHealth))
-	if body.currentHealth <= 0:
-		Engine.time_scale = 0.5
+	if body.has_method("is_a_player"):
+		if body.currentHealth <= 0:
+			Engine.time_scale = 0.5
 	
 	#Rotate body depending on the direction character is facing
 	if (body.is_flipped == false) and (body.currentHealth <= 5):

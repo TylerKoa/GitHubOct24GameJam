@@ -1,62 +1,21 @@
-[gd_scene load_steps=17 format=3 uid="uid://1qh4q205rany"]
+[gd_scene load_steps=9 format=3 uid="uid://1qh4q205rany"]
 
 [ext_resource type="Script" path="res://scripts/blue_enemy.gd" id="1_aru6x"]
-[ext_resource type="Texture2D" uid="uid://blsl153h6r2ij" path="res://TEMP2_sprites/characters/slime.png" id="1_j8kgx"]
+[ext_resource type="Texture2D" uid="uid://cp4f51x7m01w0" path="res://characterSpritesGame/ThePope_design.png" id="2_afutf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aokyd"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhe7m"]
+atlas = ExtResource("2_afutf")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtv4d"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mlx75"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rsc8v"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xw50l"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(0, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pucc"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(32, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmk0j"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1kt2i"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(96, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_utpm8"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(128, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_16iqd"]
-atlas = ExtResource("1_j8kgx")
-region = Rect2(160, 128, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqcgq"]
+atlas = ExtResource("2_afutf")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2aytw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aokyd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtv4d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mlx75")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rsc8v")
+"texture": SubResource("AtlasTexture_qhe7m")
 }],
 "loop": true,
 "name": &"idel",
@@ -64,22 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xw50l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pucc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmk0j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1kt2i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_utpm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_16iqd")
+"texture": SubResource("AtlasTexture_vqcgq")
 }],
 "loop": true,
 "name": &"walk",
@@ -98,24 +42,26 @@ radius = 6.0
 script = ExtResource("1_aru6x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_2aytw")
-animation = &"walk"
+animation = &"idel"
 
 [node name="detectionArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionArea"]
+position = Vector2(0, -30)
 shape = SubResource("CircleShape2D_nfwmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-scale = Vector2(1.69415, 1.69415)
+position = Vector2(-1, -23)
+scale = Vector2(1.69415, 3.86793)
 shape = SubResource("CircleShape2D_86bkv")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
-scale = Vector2(1.02003, 1.02003)
+position = Vector2(0, -20)
+scale = Vector2(-1.15184, 2.80446)
 collision_layer = 2
 collision_mask = 2
 
