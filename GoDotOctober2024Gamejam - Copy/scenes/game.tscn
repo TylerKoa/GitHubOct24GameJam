@@ -254,7 +254,13 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="Cooldown" type="Timer" parent="Player"]
+wait_time = 0.6
+autostart = true
+
 [node name="TileMap" type="Node2D" parent="."]
+light_mask = 4
+visibility_layer = 4
 
 [node name="Layer0" type="TileMapLayer" parent="TileMap"]
 visibility_layer = 2
@@ -411,5 +417,6 @@ shape = SubResource("RectangleShape2D_pehbg")
 position = Vector2(254, -58)
 collision_layer = 5
 
+[connection signal="timeout" from="Player/Cooldown" to="Player" method="_on_cooldown_timeout"]
 [connection signal="area_entered" from="Objects/Killzone" to="Player" method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="SingleHitDamge" to="2ndBody" method="_on_single_hit_damge_body_entered"]
