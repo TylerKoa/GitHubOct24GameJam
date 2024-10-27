@@ -63,22 +63,13 @@ func get_input():
 		
 		
 		if possesingSkelly == false:
-			
 			possesingSkelly = true
 			player_animated_sprite.play("skellyRun")
 			Second_body.change_to_knight()
-			get_tree().get_root().get_node("2ndBody").visible = false
-			
 		else:
-			$AnimatedSprite2D.visible = true
-			knight_player.position = Second_body.position
 			possesingSkelly = false
 			player_animated_sprite.play("ghostRun")
 			Second_body.change_to_ghost()
-			
-	while (possesingSkelly == true):
-		await get_tree().create_timer(0.2).timeout
-		Second_body.position = knight_player.position 
 	
 	# ---------------------- Directional animations ----------------------------------------------
 	# Gets axis for movement

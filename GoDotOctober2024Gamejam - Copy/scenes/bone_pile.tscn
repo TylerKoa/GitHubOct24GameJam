@@ -1,34 +1,56 @@
-[gd_scene load_steps=8 format=3 uid="uid://btvvg465f7vhv"]
+[gd_scene load_steps=9 format=3 uid="uid://cmnwtpflxqxj1"]
 
-[ext_resource type="Texture2D" uid="uid://88nbcirrvf7c" path="res://TEMP_assets/sprites/fruit.png" id="1_lxtpd"]
 [ext_resource type="Script" path="res://scripts/bone_pile.gd" id="1_q8qhk"]
+[ext_resource type="Texture2D" uid="uid://byug86by6jc7h" path="res://characterSpritesGame/pile_bones.png" id="2_ntdcr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtdea"]
-atlas = ExtResource("1_lxtpd")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgqbc"]
+atlas = ExtResource("2_ntdcr")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnl2t"]
-atlas = ExtResource("1_lxtpd")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6pxr"]
+atlas = ExtResource("2_ntdcr")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qh0jr"]
-atlas = ExtResource("1_lxtpd")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6p3v"]
+atlas = ExtResource("2_ntdcr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_336qi"]
+atlas = ExtResource("2_ntdcr")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7rdt2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jtdea")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnl2t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qh0jr")
+"texture": SubResource("AtlasTexture_mgqbc")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6pxr")
+}],
+"loop": true,
+"name": &"glasses",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6p3v")
+}],
+"loop": true,
+"name": &"hat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_336qi")
+}],
+"loop": true,
+"name": &"poop",
 "speed": 5.0
 }]
 
@@ -41,11 +63,14 @@ script = ExtResource("1_q8qhk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
+scale = Vector2(0.407214, 0.407214)
 sprite_frames = SubResource("SpriteFrames_7rdt2")
+animation = &"glasses"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-position = Vector2(0, 8)
+position = Vector2(0, 24.5571)
+scale = Vector2(3.19496, 3.19496)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]

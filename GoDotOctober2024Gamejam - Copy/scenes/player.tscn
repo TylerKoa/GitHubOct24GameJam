@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_v5xgl"]
 [ext_resource type="Texture2D" uid="uid://gayqe34afvva" path="res://TEMP_assets/sprites/simple_ghost.png" id="2_r0hae"]
 [ext_resource type="Texture2D" uid="uid://crv0al7csr1g1" path="res://TEMP_assets/sprites/all_movements.png" id="3_n4pcd"]
-[ext_resource type="Texture2D" uid="uid://1jl44alvrs3k" path="res://assetsGame/SkeletonAndGhost.png" id="4_7xlfh"]
+[ext_resource type="Texture2D" uid="uid://1jl44alvrs3k" path="res://characterSpritesGame/SkeletonAndGhost.png" id="4_7xlfh"]
 [ext_resource type="Texture2D" uid="uid://di8j6t3s4ouou" path="res://TEMP_assets/sprites/transform.png" id="4_vi45k"]
 [ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="6_1h0ua"]
 
