@@ -6,7 +6,7 @@ class_name controller
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://projectile.tscn")
 @onready var game_manager: Node = %GameManager
-@export var speed = 200
+@onready var speed = 200
 @export var is_flipped = false
 @export var is_dead = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -124,7 +124,6 @@ func swap():
 		Second_body.play_invs()
 		#get_tree().get_root().get_node("2ndBody").visible = false
 	elif possesingSkelly == true:
-		speed = 200
 		$AnimatedSprite2D.visible = true
 		knight_player.position = Second_body.position
 		possesingSkelly = false
