@@ -1,8 +1,6 @@
 extends Node2D
 @onready var skelly: Node2D = $"../../2ndBody"
-@onready var label: Label = $AnimatedSprite2D/Label
-@onready var player: controller = $"../../Player"
-@onready var player_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var label: Label = $Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +13,7 @@ func _process(delta: float) -> void:
 		var temp_position = skelly.position
 		skelly.position = position
 		position = temp_position
-		skelly.play_pop()
+		skelly.play_hat()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

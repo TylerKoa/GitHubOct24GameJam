@@ -111,7 +111,6 @@ func _physics_process(delta):
 	get_input()
 	move_and_slide()
 
-	
 
 # Function called after death to stop player from moving
 func set_player_speed_zero():
