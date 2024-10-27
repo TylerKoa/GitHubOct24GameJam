@@ -263,6 +263,10 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
+[node name="Cooldown" type="Timer" parent="Player"]
+wait_time = 0.6
+autostart = true
+
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="Layer0" type="TileMapLayer" parent="TileMap"]
@@ -446,5 +450,7 @@ scale = Vector2(0.984035, 0.984035)
 position = Vector2(-37, -110)
 scale = Vector2(0.399657, 0.399657)
 
+[connection signal="timeout" from="Player/Cooldown" to="2ndBody" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="Player/Cooldown" to="Player" method="_on_cooldown_timeout"]
 [connection signal="area_entered" from="Objects/Killzone" to="Player" method="_on_killzone_area_entered"]
 [connection signal="body_entered" from="SingleHitDamge" to="2ndBody" method="_on_single_hit_damge_body_entered"]
