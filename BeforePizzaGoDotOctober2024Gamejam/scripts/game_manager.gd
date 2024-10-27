@@ -54,7 +54,17 @@ func hide_smallF_label():
 	#_2_nd_body2.label_2.visible = false
 	pass
 
-
+"""
 func object_move_to_player(object):
 	var objectSpeed = 100
 	object.position += (player.position - object.position)/objectSpeed
+	var distanceBetweenObjectPerson = player.position-object.position
+	if (distanceBetweenObjectPerson[0] > -5 || distanceBetweenObjectPerson[1] < 5):
+		if Input.is_action_just_pressed("attack"):
+			print("GET BACK!!")
+			object.position[0] -= 12
+			object.position[1] -= 12
+		print("Close to player")
+	else:
+		print("not close")
+"""

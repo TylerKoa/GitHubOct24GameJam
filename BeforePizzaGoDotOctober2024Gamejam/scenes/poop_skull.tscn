@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://3g3h8bqakj7t"]
+[gd_scene load_steps=6 format=3 uid="uid://3g3h8bqakj7t"]
 
+[ext_resource type="Script" path="res://scripts/poop_skull.gd" id="1_ctuaj"]
 [ext_resource type="Texture2D" uid="uid://byug86by6jc7h" path="res://characterSpritesGame/pile_bones.png" id="1_vw8x0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo1ls"]
@@ -21,6 +22,7 @@ animations = [{
 size = Vector2(30, 31)
 
 [node name="PoopSkull" type="Node2D"]
+script = ExtResource("1_ctuaj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -28,7 +30,12 @@ sprite_frames = SubResource("SpriteFrames_c1gs8")
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_agur0")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_exited"]
