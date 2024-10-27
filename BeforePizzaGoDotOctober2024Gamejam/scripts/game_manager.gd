@@ -21,6 +21,8 @@ func add_point():
 	#Calls function inside of hud to update coin display
 	hud.update_coins_display()
 	hud.add_coin_display()
+	if score >= 15:
+		
 	print(score)
 
 func subtract_enemy_one():
