@@ -11,11 +11,19 @@ func _process(delta: float) -> void:
 	
 	pass
 
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 
 func _on_timer_timeout() -> void:
 	queue_free()
 
-func _init() -> void:
-	collision_layer = 2
-	collision_mask = 0
+func is_a_bullet():
+	true
+
+
+func _on_body_entered(body):
+	
+	if body.has_method("enemy"):
+		body.pushback()
+		queue_free()
 	

@@ -7,7 +7,7 @@ var speed = 70
 var player_chase
 var player = null
 
-var health = 100
+var health = 8
 var player_inattack_zone = false
 
 func check_health():
@@ -48,8 +48,13 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 
 func enemy():
+	true
 	pass
 
+func pushback():
+	health -= 1
+	if health <= 0:
+		queue_free()
 
 func _on_enemy_hit_box_body_entered(body: Node2D) -> void:
 	if body.has_method("is_a_player"):
