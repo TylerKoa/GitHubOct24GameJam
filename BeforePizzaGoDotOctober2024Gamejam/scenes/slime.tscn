@@ -30,6 +30,7 @@ animations = [{
 size = Vector2(9, 11)
 
 [node name="Slime" type="Node2D"]
+scale = Vector2(1.46548, 1.46548)
 script = ExtResource("1_apfmc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

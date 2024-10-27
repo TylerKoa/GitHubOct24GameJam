@@ -6,7 +6,7 @@ class_name controller
 @onready var main = get_tree().get_root().get_node("Game")
 @onready var projectile = load("res://projectile.tscn")
 @onready var game_manager: Node = %GameManager
-@export var speed = 100
+@export var speed = 200
 @export var is_flipped = false
 @export var is_dead = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
