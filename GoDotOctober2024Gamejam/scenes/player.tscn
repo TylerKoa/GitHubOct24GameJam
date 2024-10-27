@@ -170,7 +170,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osuju"]
 radius = 5.0
-height = 32.1801
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_e4jfr"]
 length = 0.001
@@ -309,11 +309,11 @@ _data = {
 size = Vector2(17.1931, 22)
 
 [node name="KnightPlayer" type="CharacterBody2D"]
-position = Vector2(0, 10)
 collision_layer = 2
 script = ExtResource("1_v5xgl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
 scale = Vector2(0.41578, 0.41578)
 sprite_frames = SubResource("SpriteFrames_uesfa")
 animation = &"ghostIdle"
@@ -322,6 +322,7 @@ autoplay = "ghostRun"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(0, -7)
 scale = Vector2(0.945174, 0.807954)
 shape = SubResource("CapsuleShape2D_osuju")
 
@@ -345,7 +346,6 @@ libraries = {
 }
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
-position = Vector2(-3.55271e-15, 0)
 scale = Vector2(1.68962, 1.05365)
 collision_layer = 2
 collision_mask = 2
@@ -353,7 +353,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(3.5277e-08, 9.53674e-07)
+position = Vector2(0, -11)
 scale = Vector2(1.27585, 1.02995)
 shape = SubResource("RectangleShape2D_wtffk")
 
