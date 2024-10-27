@@ -58,16 +58,17 @@ func get_input():
 		#Swap character positons
 		var temp_current_location = knight_player.position
 		knight_player.position = Second_body.position
-		
 		Second_body.position[0] = temp_current_location[0]
 		Second_body.position[1] = temp_current_location[1]
 		
 		
 		if possesingSkelly == false:
 			possesingSkelly = true
+			player_animated_sprite.play("skellyRun")
 			Second_body.change_to_knight()
 		else:
 			possesingSkelly = false
+			player_animated_sprite.play("ghostRun")
 			Second_body.change_to_ghost()
 	
 	# ---------------------- Directional animations ----------------------------------------------

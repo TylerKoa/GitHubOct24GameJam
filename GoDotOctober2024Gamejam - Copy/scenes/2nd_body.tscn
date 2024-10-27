@@ -1,37 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://bld5hvoc0vej0"]
+[gd_scene load_steps=10 format=3 uid="uid://bld5hvoc0vej0"]
 
 [ext_resource type="Script" path="res://scripts/2_nd_body.gd" id="1_kau51"]
+[ext_resource type="Texture2D" uid="uid://1jl44alvrs3k" path="res://assetsGame/SkeletonAndGhost.png" id="3_7cq4k"]
 [ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="3_osk1l"]
-[ext_resource type="Texture2D" uid="uid://crv0al7csr1g1" path="res://TEMP_assets/sprites/all_movements.png" id="4_l3po8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kiwnl"]
-atlas = ExtResource("4_l3po8")
-region = Rect2(48, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7np0v"]
+atlas = ExtResource("3_7cq4k")
+region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s8rgp"]
-atlas = ExtResource("4_l3po8")
-region = Rect2(0, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_va8mj"]
+atlas = ExtResource("3_7cq4k")
+region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q5ign"]
-atlas = ExtResource("4_l3po8")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcypy"]
+atlas = ExtResource("3_7cq4k")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kq8x0"]
-atlas = ExtResource("4_l3po8")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4b4q"]
-atlas = ExtResource("4_l3po8")
-region = Rect2(24, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_osf26"]
+atlas = ExtResource("3_7cq4k")
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o2i1x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kiwnl")
+"texture": SubResource("AtlasTexture_7np0v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s8rgp")
+"texture": SubResource("AtlasTexture_va8mj")
 }],
 "loop": true,
 "name": &"ghost_follow",
@@ -39,13 +35,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q5ign")
+"texture": SubResource("AtlasTexture_pcypy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kq8x0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4b4q")
+"texture": SubResource("AtlasTexture_osf26")
 }],
 "loop": true,
 "name": &"skellyIdel",
@@ -60,13 +53,14 @@ script = ExtResource("1_kau51")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
+scale = Vector2(0.370162, 0.370162)
 sprite_frames = SubResource("SpriteFrames_o2i1x")
-animation = &"ghost_follow"
+animation = &"skellyIdel"
 autoplay = "skellyIdel"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
-position = Vector2(0, -4)
-scale = Vector2(1.6, 1.36)
+position = Vector2(0, -27.0152)
+scale = Vector2(5.46634, 4.64639)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2(0, 6)
