@@ -3,10 +3,12 @@ extends CharacterBody2D
 #@onready var animation: AnimationPlayer = $AnimationPlayer
 #@onready var anim_cooldown: Timer = $AnimCooldown
 @onready var label: Label = $Sprite2D/Label
+@onready var shop: CanvasLayer = $Shop
 
 
 var idle = true
 var buy = false
+var open = false
 
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +37,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	label.visible = true
-	
+	if (Input.is_action_just_pressed("open")):
+		get_node("Shop/Anim").play("Idle")
+		get_node("Shop")._yes()
+
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
