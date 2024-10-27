@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://cqqyqnpkcebhi"]
+
+[ext_resource type="Texture2D" uid="uid://bfwk4sdw4j6yh" path="res://characterSpritesGame/TheExorcist_design.png" id="1_ht5vc"]
+[ext_resource type="Script" path="res://scenes/exorsists.gd" id="1_idu3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qka8c"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2s2x"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c7fc"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kog5j"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmpxs"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61oq0"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa20x"]
+atlas = ExtResource("1_ht5vc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7px3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qka8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2s2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c7fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kog5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmpxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61oq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa20x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oui60"]
+size = Vector2(28, 60)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ab3v0"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_idu3o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -32)
+sprite_frames = SubResource("SpriteFrames_7px3n")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 2
+position = Vector2(-2, 1)
+scale = Vector2(2.2852, 2.2852)
+shape = SubResource("RectangleShape2D_oui60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+scale = Vector2(2.06895, 2.06895)
+shape = SubResource("CircleShape2D_ab3v0")

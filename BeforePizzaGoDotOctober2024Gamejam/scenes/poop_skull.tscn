@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://3g3h8bqakj7t"]
+
+[ext_resource type="Texture2D" uid="uid://byug86by6jc7h" path="res://characterSpritesGame/pile_bones.png" id="1_vw8x0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo1ls"]
+atlas = ExtResource("1_vw8x0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1gs8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo1ls")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_agur0"]
+size = Vector2(30, 31)
+
+[node name="PoopSkull" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_c1gs8")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_agur0")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://gfj4s4kj06xo"]
+
+[ext_resource type="Texture2D" uid="uid://cp4f51x7m01w0" path="res://characterSpritesGame/ThePope_design.png" id="1_5th44"]
+[ext_resource type="Script" path="res://scripts/poop.gd" id="1_orsys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8xgs"]
+atlas = ExtResource("1_5th44")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mle2a"]
+atlas = ExtResource("1_5th44")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j02ig"]
+atlas = ExtResource("1_5th44")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4meks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8xgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mle2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j02ig")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x7md"]
+size = Vector2(20, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sw8kl"]
+radius = 32.8938
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_orsys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -33)
+sprite_frames = SubResource("SpriteFrames_4meks")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_8x7md")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, -33)
+shape = SubResource("CircleShape2D_sw8kl")

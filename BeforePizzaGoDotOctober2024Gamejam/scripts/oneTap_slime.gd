@@ -9,7 +9,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.position[0] += 15
 	
 	game_manager.remove_health()
-	if body.currentHealth == 0:
+	if body.currentHealth <= 0:
 		body.set_player_speed_zero()
 		get_tree().reload_current_scene()
 	print(body.currentHealth)

@@ -65,7 +65,6 @@ script = ExtResource("1_q8qhk")
 position = Vector2(0, -8)
 scale = Vector2(0.407214, 0.407214)
 sprite_frames = SubResource("SpriteFrames_7rdt2")
-animation = &"glasses"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]

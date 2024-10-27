@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name controller
 
 @onready var game_manager: Node = %GameManager
-@export var speed = 100
+@export var speed = 150
 @export var is_flipped = false
 @export var is_dead = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -11,6 +11,8 @@ class_name controller
 @onready var knight_player: controller = $"."
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
+
+
 
 var currentHealth = 5
 
@@ -24,8 +26,11 @@ func removeFive():
 @onready var Second_body: Node2D = $"../2ndBody"
 @onready var player: CharacterBody2D = $"."
 var keep_following = false
+
 #Function that is being called over and over while walking
 func get_input():
+	if Input.is_action_just_pressed("letMeOut"):
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	# Movement
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
@@ -39,21 +44,24 @@ func get_input():
 	elif (input_direction_axis < 0) and (is_dead == false):
 		is_flipped = true
 		player_animated_sprite.flip_h = true;
-
-
-	
 	
 	# Check if showing label and f
 	var mouse_position = get_global_mouse_position()
-	
-
 	# -------------------- If mouse over 2nd character and F is clicked -------------------
 	var distanceX = (knight_player.position-Second_body.position)
-	if (distanceX[0] <= 50) and (distanceX[0] >= -50):
+	if (distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == false):
 		game_manager.show_F_label()
-	elif distanceX[0] > 50 || distanceX[0] < - 50:
+		game_manager.hide_smallF_label()
+	elif(distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == true):
 		game_manager.hide_F_label()
-	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)):
+		game_manager.show_smallF_label()
+	elif((distanceX[0] <= 50) and (distanceX[0] >= -50) and (possesingSkelly == true)):
+		game_manager.hide_F_label()
+		game_manager.show_smallF_label()
+	elif(((distanceX[0] >= 50) || (distanceX[0] <= -50)) and (possesingSkelly == false)):
+		game_manager.hide_F_label()
+		game_manager.hide_smallF_label()
+	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)):
 		print("swapping")
 		#Swap character positons
 		var temp_current_location = knight_player.position
@@ -63,13 +71,24 @@ func get_input():
 		
 		
 		if possesingSkelly == false:
+			
 			possesingSkelly = true
+			speed = 100
 			player_animated_sprite.play("skellyRun")
 			Second_body.change_to_knight()
+			#get_tree().get_root().get_node("2ndBody").visible = false
+			
 		else:
+			$AnimatedSprite2D.visible = true
+			knight_player.position = Second_body.position
 			possesingSkelly = false
+			speed = 150
 			player_animated_sprite.play("ghostRun")
 			Second_body.change_to_ghost()
+			
+	while (possesingSkelly == true):
+		await get_tree().create_timer(0.2).timeout
+		Second_body.position = knight_player.position 
 	
 	# ---------------------- Directional animations ----------------------------------------------
 	# Gets axis for movement

@@ -1,5 +1,12 @@
 extends Node
 @onready var _2_nd_body: Node2D = $"../2ndBody"
+@onready var second_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var label_2: Label = $AnimatedSprite2D/Area2D/Label2
+@onready var label_2_timer: Timer = $AnimatedSprite2D/Area2D/label2Timer
+@onready var player: controller = $"../Player"
+
+
+
 
 var score = 0
 var health = 5
@@ -36,5 +43,18 @@ func remove_five_health():
 
 func show_F_label():
 	_2_nd_body.label.visible = true
+	
 func hide_F_label():
 	_2_nd_body.label.visible = false
+
+func show_smallF_label():
+	#_2_nd_body2.label_2.visible = true
+	pass
+func hide_smallF_label():
+	#_2_nd_body2.label_2.visible = false
+	pass
+
+
+func object_move_to_player(object):
+	var objectSpeed = 100
+	object.position += (player.position - object.position)/objectSpeed

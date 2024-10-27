@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://du4jjjga4x7yv"]
+[gd_scene load_steps=4 format=3 uid="uid://du4jjjga4x7yv"]
 
 [ext_resource type="Texture2D" uid="uid://dbbf5uqg71kdj" path="res://TEMP_assets/sprites/temp_bg.png" id="1_287pn"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_u1bs2"]
 [ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="2_ovq3f"]
 
 [node name="MainMenu" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u1bs2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -22,20 +24,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.990339, 0.98994)
 texture = ExtResource("1_287pn")
-
-[node name="ExitGame" type="Button" parent="TextureRect"]
-custom_minimum_size = Vector2(360, 120)
-layout_mode = 2
-anchor_left = 0.354
-anchor_top = 0.632
-anchor_right = 0.636
-anchor_bottom = 0.782
-offset_left = -0.128021
-offset_top = -0.171722
-offset_right = 804.778
-offset_bottom = 525.728
-scale = Vector2(0.290384, 0.157762)
-icon_alignment = 1
 
 [node name="Seporator2" type="Control" parent="TextureRect"]
 layout_mode = 2
@@ -66,6 +54,7 @@ text = "GAME TITLE"
 horizontal_alignment = 1
 
 [node name="StartGame" type="Button" parent="TextureRect"]
+z_index = 2
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
 anchor_left = 0.355
@@ -83,3 +72,24 @@ theme_override_fonts/font = ExtResource("2_ovq3f")
 theme_override_font_sizes/font_size = 160
 text = "Start Game"
 icon_alignment = 1
+
+[node name="ExitGame" type="Button" parent="TextureRect"]
+z_index = 2
+custom_minimum_size = Vector2(360, 120)
+layout_mode = 2
+anchor_left = 0.354
+anchor_top = 0.632
+anchor_right = 0.636
+anchor_bottom = 0.782
+offset_left = 19.0572
+offset_top = -40.5782
+offset_right = 823.963
+offset_bottom = 485.322
+scale = Vector2(0.255527, 0.181999)
+theme_override_fonts/font = ExtResource("2_ovq3f")
+theme_override_font_sizes/font_size = 128
+text = "Exit Game"
+icon_alignment = 1
+
+[connection signal="button_down" from="TextureRect/StartGame" to="." method="_on_start_game_button_down"]
+[connection signal="button_down" from="TextureRect/ExitGame" to="." method="_on_exit_game_button_down"]

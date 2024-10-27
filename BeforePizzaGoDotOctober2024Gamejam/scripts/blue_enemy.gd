@@ -17,12 +17,14 @@ func _physics_process(delta: float) -> void:
 	
 	check_health()
 	
-	if game_manager.health <= 0:
-		get_tree().reload_current_scene()
+	#if game_manager.health <= 0:
+		#get_tree().reload_current_scene()
 
 	deal_with_damage()
-	
 	if player_chase:
+		print("slime I think: " + str(position))
+		print("player" + str(player.position))
+		print("speed" + str(speed))
 		position += (player.position - position)/speed
 		
 		$AnimatedSprite2D.play("walk")
@@ -40,7 +42,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
-	player = null
+	player = body
 	player_chase = false
 	print("playerLeft")
 

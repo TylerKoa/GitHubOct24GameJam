@@ -316,7 +316,7 @@ script = ExtResource("1_v5xgl")
 position = Vector2(0, -12)
 scale = Vector2(0.41578, 0.41578)
 sprite_frames = SubResource("SpriteFrames_uesfa")
-animation = &"ghostIdle"
+animation = &"ghostRun"
 autoplay = "ghostRun"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
