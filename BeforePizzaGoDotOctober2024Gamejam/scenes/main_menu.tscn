@@ -1,8 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://du4jjjga4x7yv"]
+[gd_scene load_steps=9 format=3 uid="uid://du4jjjga4x7yv"]
 
 [ext_resource type="Texture2D" uid="uid://dbbf5uqg71kdj" path="res://TEMP_assets/sprites/temp_bg.png" id="1_287pn"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_u1bs2"]
 [ext_resource type="FontFile" uid="uid://be8hbwrmnpdjp" path="res://TEMP_assets/fonts/PixelOperator8.ttf" id="2_ovq3f"]
+[ext_resource type="Texture2D" uid="uid://bi14m7tvli8tg" path="res://TitleScreen.png" id="3_r3itg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmyjq"]
+atlas = ExtResource("3_r3itg")
+region = Rect2(0, 0, 304, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfbkp"]
+atlas = ExtResource("3_r3itg")
+region = Rect2(0, 164, 304, 164)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8df2n"]
+atlas = ExtResource("3_r3itg")
+region = Rect2(0, 328, 304, 164)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kr8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmyjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfbkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8df2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,63 +63,51 @@ offset_top = 12.1219
 offset_right = 1146.12
 offset_bottom = 636.122
 
-[node name="GameTitle" type="Label" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.182
-anchor_right = 0.5
-anchor_bottom = 0.182
-offset_left = -554.217
-offset_top = -32.1541
-offset_right = 579.783
-offset_bottom = 31.8459
-grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 65
-theme_override_fonts/font = ExtResource("2_ovq3f")
-theme_override_font_sizes/font_size = 64
-text = "GAME TITLE"
-horizontal_alignment = 1
-
 [node name="StartGame" type="Button" parent="TextureRect"]
+visibility_layer = 0
 z_index = 2
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
-anchor_left = 0.355
-anchor_top = 0.363
-anchor_right = 0.637
-anchor_bottom = 0.514
-offset_left = 19.9099
-offset_top = -7.08502
-offset_right = 1038.82
-offset_bottom = 518.161
+anchor_left = 0.066
+anchor_top = 0.644
+anchor_right = 0.215
+anchor_bottom = 0.742
+offset_left = -6.022
+offset_top = -17.176
+offset_right = 816.095
+offset_bottom = 542.732
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.209604, 0.157762)
 theme_override_fonts/font = ExtResource("2_ovq3f")
 theme_override_font_sizes/font_size = 160
-text = "Start Game"
+text = "
+"
 icon_alignment = 1
 
 [node name="ExitGame" type="Button" parent="TextureRect"]
+visibility_layer = 0
 z_index = 2
 custom_minimum_size = Vector2(360, 120)
 layout_mode = 2
-anchor_left = 0.354
-anchor_top = 0.632
-anchor_right = 0.636
-anchor_bottom = 0.782
-offset_left = 19.0572
-offset_top = -40.5782
-offset_right = 823.963
-offset_bottom = 485.322
+anchor_left = 0.066
+anchor_top = 0.806
+anchor_right = 0.222
+anchor_bottom = 0.893
+offset_left = -5.022
+offset_top = -24.124
+offset_right = 542.926
+offset_bottom = 446.978
 scale = Vector2(0.255527, 0.181999)
 theme_override_fonts/font = ExtResource("2_ovq3f")
 theme_override_font_sizes/font_size = 128
-text = "Exit Game"
 icon_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect"]
+position = Vector2(583.37, 327.709)
+scale = Vector2(3.82821, 4.01093)
+sprite_frames = SubResource("SpriteFrames_8kr8y")
+frame_progress = 0.363904
 
 [connection signal="button_down" from="TextureRect/StartGame" to="." method="_on_start_game_button_down"]
 [connection signal="button_down" from="TextureRect/ExitGame" to="." method="_on_exit_game_button_down"]
