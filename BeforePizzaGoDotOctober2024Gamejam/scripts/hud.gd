@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var show_coin_addition: Timer = $showCoinAddition
 @onready var dead_timer: Timer = $deadTimer
 @onready var player: controller = $"../../Player"
+@onready var Death_level = preload("res://scenes/Death_Screen.tscn") as PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,8 +43,15 @@ func subtract_heart_display():
 	show_subtraction_timer.start()
 
 func checkIfDead():
-	if game_manager.health <= -1:
-		get_tree().reload_current_scene()
+	if game_manager.health <= 0:
+		if player.possesingSkelly == true:
+			game_manager.health = 2
+			game_manager.addOneHealth()
+			player.currentHealth = 3
+			player.swap()
+			player.position = Vector2(24, -13)
+		else:
+			get_tree().change_scene_to_packed(Death_level)
 
 
 func add_coin_display():

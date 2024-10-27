@@ -1,3 +1,4 @@
+
 extends Area2D
 
 @onready var game_manager: Node = %GameManager
@@ -24,9 +25,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.position[0] += 25
 	body.removeFive()
 	print(body.currentHealth)
-	if body.currentHealth <= 0:
-		body.set_player_speed_zero()
-		timer.start()
 
 
 func _on_timer_timeout() -> void:

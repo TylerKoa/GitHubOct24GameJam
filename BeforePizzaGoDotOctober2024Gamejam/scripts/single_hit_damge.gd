@@ -1,5 +1,6 @@
 extends Area2D
 @onready var game_manager: Node = %GameManager
+@onready var Death_level = preload("res://scenes/Death_Screen.tscn") as PackedScene
 
 func _on_body_entered(body: Node2D) -> void:
 	print("You got hit")
@@ -10,7 +11,10 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	game_manager.remove_health()
 	if body.currentHealth == 0:
-		body.set_player_speed_zero()
-		get_tree().reload_current_scene()
+		if body.possesingSkelly == true:
+			body.swap()
+		else:
+			get_tree().change_scene_to_packed(Death_level)
+			body.set_player_speed_zero()
 	print(body.currentHealth)
 	

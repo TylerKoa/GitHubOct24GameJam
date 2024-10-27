@@ -15,7 +15,7 @@ class_name controller
 @onready var knight_player: controller = $"."
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
-
+@onready var Death_level = preload("res://scenes/Death_Screen.tscn") as PackedScene
 @onready var cooldown_timer = $Timer
 
 var currentHealth = 5
@@ -78,41 +78,7 @@ func get_input():
 		game_manager.hide_smallF_label()
 	
 	if (Input.is_action_just_pressed("swap") and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false)):
-		print("swapping")
-		#Swap character positons
-		var temp_current_location = knight_player.position
-		knight_player.position = Second_body.position
-		Second_body.position[0] = temp_current_location[0]
-		Second_body.position[1] = temp_current_location[1]
-		if possesingSkelly == false:
-			possesingSkelly = true
-			speed = 100
-			#Decide animation:
-			if AnimeType == "hat":
-				player_animated_sprite.play("hatSkellyRun")
-			elif AnimeType == "google":
-				player_animated_sprite.play("priestSkellyRun")
-			elif AnimeType == "poop":
-				player_animated_sprite.play("popSkellyRun")
-			else:
-				player_animated_sprite.play("skellyRun")
-			Second_body.play_invs()
-			#get_tree().get_root().get_node("2ndBody").visible = false
-		elif possesingSkelly == true:
-			$AnimatedSprite2D.visible = true
-			knight_player.position = Second_body.position
-			possesingSkelly = false
-			speed = 150
-			if AnimeType == "hat":
-				Second_body.play_hat()
-			elif AnimeType == "google":
-				Second_body.play_googles()
-			elif AnimeType == "poop":
-				Second_body.play_pop()
-			else:
-				Second_body.play_idel()
-			player_animated_sprite.play("ghostRun")
-			
+		swap()
 	while (possesingSkelly == true):
 		await get_tree().create_timer(0.2).timeout
 		Second_body.position = knight_player.position 
@@ -127,12 +93,55 @@ func get_input():
 	elif (input_direction_axis < 0) and (is_dead == false):
 		is_flipped = true
 	
+	
+func swap():
+	print("swapping")
+	#Swap character positons
+	var temp_current_location = knight_player.position
+	knight_player.position = Second_body.position
+	Second_body.position[0] = temp_current_location[0]
+	Second_body.position[1] = temp_current_location[1]
+	if possesingSkelly == false:
+		possesingSkelly = true
+		speed = 100
+		#Decide animation:
+		if AnimeType == "hat":
+			player_animated_sprite.play("hatSkellyRun")
+		elif AnimeType == "google":
+			player_animated_sprite.play("priestSkellyRun")
+		elif AnimeType == "poop":
+			player_animated_sprite.play("popSkellyRun")
+		else:
+			player_animated_sprite.play("skellyRun")
+		Second_body.play_invs()
+		#get_tree().get_root().get_node("2ndBody").visible = false
+	elif possesingSkelly == true:
+		$AnimatedSprite2D.visible = true
+		knight_player.position = Second_body.position
+		possesingSkelly = false
+		speed = 150
+		if AnimeType == "hat":
+			Second_body.play_hat()
+		elif AnimeType == "google":
+			Second_body.play_googles()
+		elif AnimeType == "poop":
+			Second_body.play_pop()
+		else:
+			Second_body.play_idel()
+		player_animated_sprite.play("ghostRun")
 # Function that is constantly being called to move character [don't touch]
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
 	if possesingSkelly == true and Input.is_action_just_pressed("attack"):
 		shoot()
+	if currentHealth <= 0:
+		if possesingSkelly == true:
+			swap()
+			knight_player.position = Vector2(24, -13)
+		else:
+			get_tree().change_scene_to_packed(Death_level)
+		
 
 
 # Function called after death to stop player from moving
