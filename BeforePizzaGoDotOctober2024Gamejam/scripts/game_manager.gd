@@ -3,7 +3,7 @@ extends Node
 @onready var second_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label_2: Label = $AnimatedSprite2D/Area2D/Label2
 @onready var label_2_timer: Timer = $AnimatedSprite2D/Area2D/label2Timer
-@onready var player: controller = $"../Player"
+
 
 
 

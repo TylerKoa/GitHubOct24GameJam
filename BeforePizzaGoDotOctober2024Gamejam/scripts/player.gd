@@ -15,20 +15,19 @@ class_name controller
 @onready var knight_player: controller = $"."
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
-<<<<<<< Updated upstream
+
 @onready var cooldown_timer = $Timer
 
 var currentHealth = 5
 var can_shoot = true
 
-=======
+
 
 
 var onBones = false
-var currentHealth = 5
 var AnimeType = "hat"
 #hat, google, poop
->>>>>>> Stashed changes
+#>>>>>>> Stashed changes
 
 func removeFive():
 	currentHealth -= 5
