@@ -10,7 +10,7 @@ extends Node2D
 @export var follow_target: controller
 
 #Character 2 sprite
-@onready var blob_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var skelly_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 60
 var direction = 1
@@ -34,10 +34,24 @@ func _on_area_2d_mouse_exited() -> void:
 	showing_label = false
 
 func change_to_ghost():
-	blob_animated_sprite.play("skellyIdel")
+	skelly_sprite.play("skellyIdel")
 	
 
 func change_to_knight():
-	blob_animated_sprite.play("ghost_follow")
+	skelly_sprite.play("ghost_follow")
 	
 	#Add code to follow spirte
+
+#Play Animations
+func play_googles():
+	skelly_sprite.play("priestSkelly")
+func play_pop():
+	skelly_sprite.play("popSkelly")
+func play_hat():
+	skelly_sprite.play("hatSkelly")
+func play_idel():
+	skelly_sprite.play("SkellyIdel")
+
+
+func _on_cooldown_timeout() -> void:
+	pass # Replace with function body.

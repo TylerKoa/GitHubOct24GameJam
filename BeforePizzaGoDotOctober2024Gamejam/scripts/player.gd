@@ -1,8 +1,12 @@
 extends CharacterBody2D
 class_name controller
 
+
+@onready var bullet_scene = preload("res://bullet.tscn")
+@onready var main = get_tree().get_root().get_node("Game")
+@onready var projectile = load("res://projectile.tscn")
 @onready var game_manager: Node = %GameManager
-@export var speed = 150
+@export var speed = 100
 @export var is_flipped = false
 @export var is_dead = false
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -11,11 +15,20 @@ class_name controller
 @onready var knight_player: controller = $"."
 @onready var label: Label = $AnimatedSprite2D/Area2D/Label
 @onready var skelly_area_2d: Area2D = $AnimatedSprite2D/Area2D
-
-
+<<<<<<< Updated upstream
+@onready var cooldown_timer = $Timer
 
 var currentHealth = 5
+var can_shoot = true
 
+=======
+
+
+var onBones = false
+var currentHealth = 5
+var AnimeType = "hat"
+#hat, google, poop
+>>>>>>> Stashed changes
 
 func removeFive():
 	currentHealth -= 5
@@ -61,7 +74,7 @@ func get_input():
 	elif(((distanceX[0] >= 50) || (distanceX[0] <= -50)) and (possesingSkelly == false)):
 		game_manager.hide_F_label()
 		game_manager.hide_smallF_label()
-	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)):
+	if (Input.is_action_just_pressed("swap")) and ((distanceX[0] <= 50) and (distanceX[0] >= -50)) and ((distanceX[1] <= 50) and (distanceX[1] >= -50)) and (onBones == false):
 		print("swapping")
 		#Swap character positons
 		var temp_current_location = knight_player.position
@@ -110,13 +123,39 @@ func startGhostFollow():
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
+	if possesingSkelly == true and Input.is_action_just_pressed("attack"):
+		shoot()
 
-	
 
 # Function called after death to stop player from moving
 func set_player_speed_zero():
 	speed = 0
 
+func is_on_bones(tF):
+	onBones = tF
+
+func giveAnimeType(skull_type):
+	AnimeType = skull_type
 
 func is_a_player():
 	true
+	
+func shoot():
+	if (Input.is_action_just_pressed("attack") and can_shoot == true):
+		var bullet = bullet_scene.instantiate()
+		bullet.position.x = position.x
+		bullet.position.y = position.y
+		bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
+		get_parent().add_child(bullet)
+		can_shoot = false
+		$Cooldown.start()
+		print("action pressed")
+	else:
+		print("Weapon is on cooldown!")
+
+
+
+
+func _on_cooldown_timeout() -> void:
+	can_shoot = true
+	print("can shoot")

@@ -22,10 +22,13 @@ animations = [{
 size = Vector2(30, 31)
 
 [node name="PoopSkull" type="Node2D"]
+position = Vector2(2, -10)
+scale = Vector2(0.567056, 0.567056)
 script = ExtResource("1_ctuaj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
+scale = Vector2(2.13572, 2.13572)
 sprite_frames = SubResource("SpriteFrames_c1gs8")
 autoplay = "default"
 
@@ -36,6 +39,20 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_agur0")
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.156
+anchor_top = -0.719
+anchor_right = 1.156
+offset_left = -8.11834
+offset_top = 39.3959
+offset_right = 30.8977
+offset_bottom = 39.3879
+scale = Vector2(0.315964, 0.315964)
+text = "'F' interact"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

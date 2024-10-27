@@ -1,9 +1,9 @@
 extends Node2D
 @onready var skelly: Node2D = $"../../2ndBody"
-@onready var label: Label = $AnimatedSprite2D/Label
+@onready var label: Label = $Label
 @onready var player: controller = $"../../Player"
 
-var skull_type = "poop"
+var skull_type = "google"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		var temp_position = skelly.position
 		skelly.position = position
 		position = temp_position
-		skelly.play_pop()
+		skelly.play_googles()
 		player.giveAnimeType(skull_type)
 
 
