@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://c1koo20ekymwk"]
+[gd_scene load_steps=42 format=4 uid="uid://c1koo20ekymwk"]
 
 [ext_resource type="PackedScene" uid="uid://c7fcbb2qbuc1i" path="res://scenes/player.tscn" id="1_w4l5u"]
 [ext_resource type="Texture2D" uid="uid://bp01i6k20ck3k" path="res://TEMP_assets/sprites/world_tileset.png" id="2_7q7nt"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://scripts/exorsisy.gd" id="19_6xr8n"]
 [ext_resource type="Texture2D" uid="uid://cdeojls84rviy" path="res://titleMappingIcons/the_tomb_sprite.png" id="24_8uu37"]
 [ext_resource type="Script" path="res://scenes/shopkeep.gd" id="27_wr3ih"]
+[ext_resource type="FontFile" uid="uid://k2l54myjhee3" path="res://TEMP_assets/fonts/PixelOperator8-Bold.ttf" id="28_446v6"]
 [ext_resource type="Texture2D" uid="uid://b8fldl8jn0axg" path="res://characterSpritesGame/storeFront.png" id="28_h3u2r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_42iy2"]
@@ -242,6 +243,11 @@ size = Vector2(6, 25.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pehbg"]
 size = Vector2(20, 59)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2l5mt"]
+font = ExtResource("28_446v6")
+font_size = 15
+font_color = Color(1, 1, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7cp2"]
 size = Vector2(271.428, 133.333)
@@ -1077,6 +1083,15 @@ script = ExtResource("27_wr3ih")
 position = Vector2(604, -679)
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("28_h3u2r")
+
+[node name="Label" type="Label" parent="shopkeep/Sprite2D"]
+visible = false
+offset_left = -88.5714
+offset_top = 14.2857
+offset_right = 97.4286
+offset_bottom = 37.2857
+text = "E to Open Shop"
+label_settings = SubResource("LabelSettings_2l5mt")
 
 [node name="Area2D" type="Area2D" parent="shopkeep"]
 light_mask = 2

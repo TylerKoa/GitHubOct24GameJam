@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #@onready var animation: AnimationPlayer = $AnimationPlayer
 #@onready var anim_cooldown: Timer = $AnimCooldown
+@onready var label: Label = $Sprite2D/Label
 
 
 var idle = true
@@ -33,9 +34,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("In Range")
+	label.visible = true
 	
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	print("out of range")
+	label.visible = false
