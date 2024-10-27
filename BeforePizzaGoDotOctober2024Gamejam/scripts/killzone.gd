@@ -10,7 +10,7 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	print("-5 health")
-	print("body health:" + str(body.currentHealth))
+	print("body ealth:" + str(body.currentHealth))
 	if body.currentHealth <= 0:
 		Engine.time_scale = 0.5
 	
@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 		body.rotation_degrees = -80
 	if (body.is_flipped == false) and (body.currentHealth > 5):
 		body.position[0] -= 25
-	elif (body.is_flipped == true)  and (body.currentHealth > 5):
+	elif (body.is_flipped == true) and (body.currentHealth > 5):
 		body.position[0] += 25
 	body.removeFive()
 	print(body.currentHealth)
