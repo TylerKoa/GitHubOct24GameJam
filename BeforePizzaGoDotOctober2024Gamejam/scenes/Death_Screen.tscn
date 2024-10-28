@@ -408,7 +408,7 @@ cache/0/32/15/glyphs/75/size = Vector2(30, 38)
 cache/0/32/15/glyphs/75/uv_rect = Rect2(21, 73, 30, 38)
 cache/0/32/15/glyphs/75/texture_idx = 0
 
-[node name="MainMenu" type="Control"]
+[node name="deathScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

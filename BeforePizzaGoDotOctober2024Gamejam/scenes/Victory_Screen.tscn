@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dqoci4pg7oysa"]
+[gd_scene load_steps=21 format=4 uid="uid://dx127mvaqj7sw"]
 
 [ext_resource type="Script" path="res://scripts/victory_screen.gd" id="1_3yxcq"]
 [ext_resource type="Texture2D" uid="uid://b46m4epmjonnn" path="res://victory_screen.png" id="2_osrjw"]
@@ -422,7 +422,7 @@ cache/0/32/15/glyphs/75/size = Vector2(30, 38)
 cache/0/32/15/glyphs/75/uv_rect = Rect2(21, 73, 30, 38)
 cache/0/32/15/glyphs/75/texture_idx = 0
 
-[node name="MainMenu" type="Control"]
+[node name="Victory" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

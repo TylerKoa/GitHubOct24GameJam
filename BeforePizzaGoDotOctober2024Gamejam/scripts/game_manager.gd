@@ -3,7 +3,7 @@ extends Node
 @onready var second_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label_2: Label = $AnimatedSprite2D/Area2D/Label2
 @onready var label_2_timer: Timer = $AnimatedSprite2D/Area2D/label2Timer
-
+@onready var start_level = preload("res://scenes/Victory_Screen.tscn") as PackedScene
 
 
 
@@ -22,7 +22,7 @@ func add_point():
 	hud.update_coins_display()
 	hud.add_coin_display()
 	if score >= 15:
-		
+		get_tree().change_scene_to_packed(start_level)
 	print(score)
 
 func subtract_enemy_one():
